@@ -4,7 +4,15 @@ import "./gr-theme-mode-switcher.js"
 import "./custom.js";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-AOS.init();
+document.addEventListener('DOMContentLoaded', () => {
+  AOS.init({
+    duration: 400, // or customize
+    easing: 'ease',
+    once: true
+  });
+});
+
+
 import $ from "jquery";
 window.jQuery = $;
 window.$ = $;
