@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
-    "build:css": "sass --load-path=node_modules app/assets/stylesheets/application.scss app/assets/builds/application.css"
+    "build:css": "sass --load-path=node_modules app/assets/stylesheets/application.boostrap.scss app/assets/builds/application.css"
   },
   "version": "1.0.0",
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
