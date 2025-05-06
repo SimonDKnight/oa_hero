@@ -4,5 +4,7 @@ import "./gr-theme-mode-switcher.js"
 import "./custom.js";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import "../stylesheets/custom.css"
 AOS.init();
+import $ from "jquery";
+window.jQuery = $;
+window.$ = $;

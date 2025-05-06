@@ -19,6 +19,7 @@
     "esbuild": "^0.25.4"
   },
   "dependencies": {
-    "aos": "^2.3.4"
+    "aos": "^2.3.4",
+    "jquery": "^3.7.1"
   }
 }
