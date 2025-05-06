@@ -16,7 +16,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "esbuild": "^0.25.4"
+    "esbuild": "^0.25.4",
+    "sass": "^1.87.0"
   },
   "dependencies": {
     "aos": "^2.3.4",
