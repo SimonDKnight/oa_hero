@@ -1,0 +1,31 @@
+<div class="site-wrapper overflow-hidden bg-blackish-blue pt-27 pb-27 text-white">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-5">
+        <div class="text-center mb-9">
+          <h2 class="gr-text-3 font-weight-bold mb-3 text-white">Login with Magic Link</h2>
+          <p class="gr-text-9 text-white">Enter your email below and we’ll send you a one-time login link.</p>
+        </div>
+
+        <div class="rounded-10 p-9 border border-gray-3 bg-blackish-blue dark-mode-texts">
+          <%= form_with url: send_magic_link_path, method: :post, local: true do %>
+            <div class="form-group mb-6">
+              <%= label_tag :email, "Email", class: "gr-text-9 d-block mb-2 text-white" %>
+              <%= email_field_tag :email, nil,
+                                  class: "form-control rounded-8 px-4 py-3 w-100 bg-dark border border-gray-600 text-white",
+                                  required: true %>
+            </div>
+
+            <div class="form-group">
+              <%= submit_tag "Send Magic Link", class: "btn btn-blue w-100 rounded-8 py-3 text-white" %>
+            </div>
+          <% end %>
+
+          <div class="mt-6 text-center">
+            <p class="gr-text-9 text-white">If your email is registered, a link will be sent.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

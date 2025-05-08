@@ -1,0 +1,80 @@
+<div class="site-wrapper overflow-hidden">
+  <!-- Header -->
+  <header class="site-header site-header--menu-left site-header--absolute">
+    <div class="container">
+      <nav class="navbar site-navbar offcanvas-active navbar-expand-lg px-0">
+        <div class="brand-logo">
+          <a href="/">
+            <%= image_tag "image/OAHero-logo-dark.png", class: "dark-version-logo" %>
+          </a>
+        </div>
+
+        <!-- Login/Logout -->
+        <div class="ml-auto d-flex align-items-center">
+          <% if user_signed_in? %>
+            <span class="gr-text-9 mr-4 text-white">Hi, <%= current_user.name.presence || current_user.email %></span>
+            <%= button_to 'Logout', destroy_user_session_path, method: :delete,
+                          class: "btn btn-sm btn-red rounded-8 gr-hover-y" %>
+          <% else %>
+            <%= link_to 'Login', new_user_session_path,
+                        class: "btn btn-sm btn-primary rounded-8 gr-hover-y" %>
+          <% end %>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Dashboard Hero Section -->
+  <div class="bg-default-2 pt-27 pb-15">
+    <div class="container">
+      <div class="row justify-content-center align-items-center text-center">
+        <div class="col-lg-8">
+          <h1 class="gr-text-2 mb-4">Welcome back, <%= current_user.name.presence || current_user.email %></h1>
+          <p class="gr-text-8 mb-8">Here are your current subscription details and options to manage your billing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Subscription Card -->
+  <div class="container pb-15">
+    <div class="row justify-content-center">
+      <div class="col-lg-6" data-aos="fade-up" data-aos-duration="800" data-aos-once="true">
+        <div class="pricing-card gr-hover-shadow-1 text-center pt-9 pb-9 px-9 border rounded-10">
+          <div class="price-content">
+            <span class="small-title gr-text-12 text-uppercase text-red font-weight-bold">
+              <% current_user.licenses.each do |license| %>
+                <%= license.plan.capitalize %> Plan
+              </span>
+
+              <div class="mt-9 mb-6">
+                <% if license.plan == 'yearly' && license.stripe_subscription_id.present? %>
+                  <% begin %>
+                    <% subscription = Stripe::Subscription.retrieve(license.stripe_subscription_id) %>
+                    <% renewal_date = Time.at(license.expires_at).to_date %>
+                    <p class="gr-text-9">Renews on <strong><%= renewal_date.strftime('%B %d, %Y') %></strong></p>
+                  <% rescue => e %>
+                    <p class="text-red-500 gr-text-9">Unable to load renewal date</p>
+                  <% end %>
+                <% else %>
+                  <p class="gr-text-9">You have lifetime access 🎉</p>
+                <% end %>
+              <% end %>
+            </div>
+
+            <div class="mt-6">
+              <%= link_to "Manage Billing", billing_portal_path, class: "btn btn-blue rounded-8 w-100" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-section pt-15 pb-10 bg-blackish-blue border-top border-gray-3 dark-mode-texts">
+    <div class="container text-center">
+      <p class="gr-text-11 text-white">© <%= Time.current.year %> OA Hero. All rights reserved.</p>
+    </div>
+  </div>
+</div>

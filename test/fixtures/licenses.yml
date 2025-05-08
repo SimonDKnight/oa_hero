@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  license_key: MyString
+  plan: MyString
+  stripe_customer_id: MyString
+  stripe_subscription_id: MyString
+  expires_at: 2025-05-08 08:01:51
+
+two:
+  user: two
+  license_key: MyString
+  plan: MyString
+  stripe_customer_id: MyString
+  stripe_subscription_id: MyString
+  expires_at: 2025-05-08 08:01:51

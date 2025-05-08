@@ -12,6 +12,22 @@
           <%= image_tag "image/OAHero-logo-dark.png", class: "dark-version-logo" %>
         </a>
         </div>
+
+        <div class="ml-auto d-flex align-items-center">
+          <% if user_signed_in? %>
+            <span class="gr-text-9 mr-4 text-white">Hi, <%= current_user.email %></span>
+
+            <%= link_to 'Dashboard', dashboards_show_path,
+                        class: "btn btn-sm btn-outline-light rounded-8 gr-hover-y mr-3" %>
+
+            <%= button_to 'Logout', destroy_user_session_path,
+                          method: :delete,
+                          class: "btn btn-sm btn-red rounded-8 gr-hover-y" %>
+          <% else %>
+            <%= link_to 'Login', new_user_session_path,
+                        class: "btn btn-sm btn-primary rounded-8 gr-hover-y" %>
+          <% end %>
+        </div>
       </nav>
     </div>
   </header>
@@ -34,7 +50,7 @@
             <h1 class="title gr-text-2 mb-8">Avoid cancellations and maximise your profits.</h1>
             <p class="gr-text-8 mb-11 pr-md-12">OA Hero is your ultimate sourcing companion! It's a chrome extension takes your sourcing to the next level by helping you maximise any deals you find and helps keep you out of trouble. </p>
             <div class="hero-btn">
-              <a href="#" class="btn gr-hover-y btn-primary">Sign Up Today</a>
+              <%= link_to 'Sign Up Now!', '#pricing', class: "btn gr-hover-y btn-primary" %>
             </div>
           </div>
         </div>
@@ -71,19 +87,16 @@
             <p class="gr-text-9 mb-11">Integrated into Qogita you can avoid buying restricted brands and check the GTIN of a product directly on the page, saving you time and money.</p>
           </div>
         </div>
-<!--        <div class="col-md-6 col-lg-4 mb-9 mb-lg-0" data-aos="fade-left" data-aos-duration="800" data-aos-once="true">-->
-<!--          <div class="service-card rounded-10 gr-hover-shadow-4 d-flex flex-column text-center pt-15 px-9 pb-11 dark-mode-texts bg-red h-100">-->
-<!--            <div class="card-img mb-11">-->
-              <%#= image_tag "image/l5/png/l5-service-card3.png" %>
-<!--            </div>-->
-<!--            <h3 class="card-title gr-text-6 mb-6">More - Coming Soon</h3>-->
-<!--            <p class="gr-text-9 mb-11">Many more features on the way. Bare with us as we develop these features and help take your sourcing to the next level</p>-->
-<!--            <a href="" class="gr-text-9 btn-link with-icon text-white mt-auto">Learn more <i class="icon icon-tail-right"></i></a>-->
-<!--          </div>-->
-<!--          <div class="gr-abs-br-custom gr-z-index-n1" data-aos="zoom-in-right" data-aos-delay="600" data-aos-duration="800" data-aos-once="true">-->
-            <%#= image_tag "image/l5/png/l5-dot-shape2.png" %>
-<!--          </div>-->
-<!--        </div>-->
+        <div class="col-md-6 col-lg-4 mb-9 mb-lg-0 " data-aos="fade-up" data-aos-duration="800" data-aos-once="true">
+          <div class="service-card rounded-10 gr-hover-shadow-4 d-flex flex-column text-center pt-15 px-9 pb-11 dark-mode-texts h-100" style=" border: 1px solid white;">
+            <div class="card-img mb-11">
+              <%= image_tag "image/amazon-logo.png" %>
+            </div>
+            <h3 class="card-title gr-text-6 mb-6">Amazon Support - Coming Soon</h3>
+            <p class="gr-text-9 mb-11">Seamless integration with Amazon, gives you warnings about possible IP/PL/PI or Transparency issues with an Amazon product.</p>
+          </div>
+        </div>
+
 
       </div>
     </div>
@@ -236,7 +249,7 @@
       </div>
     </div>
   </div>
-  <div class="row justify-content-center">
+  <div id="pricing" class="row justify-content-center">
     <div class="col-sm-10 col-md-6 col-lg-5 col-xl-4 mb-9" data-aos="fade-right" data-aos-duration="500" data-aos-once="true">
       <!-- .pricing card -->
       <div class="pricing-card bg-gray-2 gr-hover-shadow-1 text-center pt-9 pb-9 pr-9 pr-xl-9  pl-9 pl-xl-9 border rounded-10">
@@ -256,7 +269,8 @@
             <li class="text-black gr-text-9 border-top mb-0 py-7 d-block">Premium Support</li>
           </ul>
         </div>
-        <a href="" class="btn btn-black rounded-8 gr-min-width-219">Sign Up Today</a>
+        <%= button_to 'Subscribe Yearly', checkouts_path(plan: 'yearly'), method: :post, class: "btn btn-black rounded-8 gr-min-width-219" %>
+<!--        <a href="" class="btn btn-black rounded-8 gr-min-width-219">Sign Up Today</a>-->
       </div>
       <!-- /.pricing carde Ends-->
     </div>
@@ -278,7 +292,7 @@
             <li class="text-black gr-text-9 border-top mb-0 py-7 d-block">Premium Support</li>
           </ul>
         </div>
-        <a href="" class="btn btn-red rounded-8 w-100 mx-auto">Get Lifetime Access</a>
+        <%= button_to 'Buy Lifetime', checkouts_path(plan: 'lifetime'), method: :post, class: "btn btn-blue rounded-8 w-100 mx-auto" %>
       </div>
       <!-- /.pricing carde Ends-->
     </div>
@@ -296,7 +310,7 @@
           </div>
           <div class="col-lg-4 offset-lg-2 col-md-10">
             <div class="cta-btn text-lg-right">
-              <a href="#" class="btn gr-hover-y btn-primary rounded-8">Sign me up now!</a>
+              <%= link_to 'Sign Up Now!', '#pricing', class: "btn gr-hover-y btn-primary rounded-8" %>
             </div>
           </div>
         </div>
@@ -359,7 +373,7 @@
           <div class="footer-logo mb-11">
             <%= image_tag "image/OAHero-logo-footer.png" %>
           </div>
-          <p class="gr-text-11">With lots of unique blocks, you can easily build a page without coding. Build your next landing page.</p>
+          <p class="gr-text-11">Your ultimate sourcing companion!</p>
           <ul class="social-icons py-7 list-unstyled mb-7 mb-lg-0">
             <li class="mr-2"><a href="" class="text-storm gr-hover-text-green"><i class="icon icon-logo-twitter"></i></a></li>
             <li class="mr-2"><a href="" class="text-storm gr-hover-text-green"><i class="icon icon-logo-facebook"></i></a></li>

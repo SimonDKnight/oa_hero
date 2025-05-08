@@ -1,0 +1,30 @@
+<div class="site-wrapper overflow-hidden bg-blackish-blue pt-27 pb-27 text-white">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-5">
+        <div class="text-center mb-9">
+          <h2 class="gr-text-3 font-weight-bold mb-3 text-white">Forgot Your Password?</h2>
+          <p class="gr-text-9 text-white">No worries — just enter your email below and we’ll send you reset instructions.</p>
+        </div>
+
+        <div class="rounded-10 p-9 border border-gray-3 bg-blackish-blue dark-mode-texts">
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <div class="form-group mb-6">
+              <%= f.label :email, class: "gr-text-9 d-block mb-2 text-white" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email",
+                                class: "form-control rounded-8 px-4 py-3 w-100 bg-dark border border-gray-600 text-white" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.submit "Send me reset instructions", class: "btn btn-blue w-100 rounded-8 py-3 text-white" %>
+            </div>
+          <% end %>
+
+          <div class="mt-6 text-center">
+            <%= link_to "Back to login", new_session_path(resource_name), class: "gr-text-9 text-white text-decoration-underline" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
