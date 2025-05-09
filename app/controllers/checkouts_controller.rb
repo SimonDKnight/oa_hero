@@ -39,7 +39,7 @@ class CheckoutsController < ApplicationController
 
     if user && user.login_token && user.login_token_valid_until&.future?
       sign_in(user)
-      redirect_to dashboards_show_path
+      redirect_to dashboard_path
     else
       redirect_to root_path, alert: 'Login failed. Please check your email.'
     end

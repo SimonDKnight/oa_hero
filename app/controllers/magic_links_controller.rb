@@ -5,7 +5,7 @@ class MagicLinksController < ApplicationController
     if user && user.login_token_valid_until&.future?
       sign_in(user)
       user.update(login_token: nil, login_token_valid_until: nil)
-      redirect_to dashboards_show_path
+      redirect_to dashboard_path
     else
       redirect_to root_path, alert: "Login link expired or invalid."
     end

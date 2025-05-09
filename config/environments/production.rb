@@ -89,4 +89,21 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  #
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address:              "smtp-relay.brevo.com",
+    port:                 587,
+    domain:               ENV['SMTP_DOMAIN'],
+    user_name:            ENV['SMTP_USERNAME'],
+    password:             ENV['SMTP_PASSWORD'],
+    authentication:       :login,
+    enable_starttls_auto: true
+  }
+
+  config.action_mailer.default_url_options = {
+    host: 'www.oahero.com',
+    protocol: 'https'
+  }
 end

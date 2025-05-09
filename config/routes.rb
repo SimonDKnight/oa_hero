@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, skip: [:registrations, :passwords]
-  get "dashboards/show"
+  get "dashboard", to: "dashboards#index"
 
   # authenticated :user do
   #   root "dashboards#show", as: :authenticated_root

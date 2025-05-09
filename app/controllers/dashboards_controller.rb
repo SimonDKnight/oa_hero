@@ -1,7 +1,7 @@
 class DashboardsController < ApplicationController
   before_action :authenticate_user!
 
-  def show
+  def index
     # Later we can pull in Stripe subscription data here
   end
 
