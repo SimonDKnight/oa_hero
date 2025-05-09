@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   post "/checkouts", to: "checkouts#create"
-  post "/webhooks/stripe", to: "webhooks#stripe"
+  post '/webhooks/stripe', to: 'webhooks#stripe'
   get 'post_checkout', to: 'checkouts#success'
   get 'billing_portal', to: 'dashboards#billing_portal'
   get '/users/sign_up', to: redirect('/users/sign_in')
