@@ -48,7 +48,7 @@ class WebhooksController < ApplicationController
       )
     end
 
-    UserMailer.subscription_confirmation(user, user.licenses.last).deliver_later
+    UserMailer.subscription_confirmation(user, user.licenses.last).deliver_now
 
     render json: { message: 'success' }, status: 200
   end
