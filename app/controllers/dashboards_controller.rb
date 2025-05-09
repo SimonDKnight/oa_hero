@@ -5,9 +5,9 @@ class DashboardsController < ApplicationController
     # Later we can pull in Stripe subscription data here
   end
 
-  def billing_portal
+  def billing_portal(license)
     session = Stripe::BillingPortal::Session.create({
-                                                      customer: current_user.stripe_customer_id,
+                                                      customer: license.stripe_customer_id,
                                                       return_url: "#{request.base_url}/dashboards/show"
                                                     })
 

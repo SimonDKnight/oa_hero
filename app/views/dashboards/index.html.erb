@@ -59,11 +59,11 @@
                 <% else %>
                   <p class="gr-text-9">You have lifetime access 🎉</p>
                 <% end %>
-              <% end %>
-            </div>
 
-            <div class="mt-6">
-              <%= link_to "Manage Billing", billing_portal_path, class: "btn btn-blue rounded-8 w-100" %>
+                <div class="mt-6">
+                  <%= link_to "Manage Billing", billing_portal_path(license), class: "btn btn-blue rounded-8 w-100" %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
