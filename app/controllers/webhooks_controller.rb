@@ -4,16 +4,18 @@ class WebhooksController < ApplicationController
   def stripe
     payload = request.body.read
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+    secret = ENV['STRIPE_WEBHOOK_SECRET']
     event = nil
 
     begin
-      event = Stripe::Webhook.construct_event(
-        payload, sig_header, Rails.application.credentials[:stripe][:webhook_secret]
-      )
+      event = Stripe::Webhook.construct_event(payload, sig_header, secret)
+      Rails.logger.info "[Webhook] Received event: #{event['type']}"
     rescue JSON::ParserError => e
-      render json: { error: 'Invalid payload' }, status: 400 and return
+      Rails.logger.error "[Webhook] Invalid JSON: #{e.message}"
+      return head :bad_request
     rescue Stripe::SignatureVerificationError => e
-      render json: { error: 'Invalid signature' }, status: 400 and return
+      Rails.logger.error "[Webhook] Signature mismatch: #{e.message}"
+      return head :bad_request
     end
 
 
