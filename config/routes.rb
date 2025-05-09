@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   post "/checkouts", to: "checkouts#create"
   post '/webhooks/stripe', to: 'webhooks#stripe'
   get 'post_checkout', to: 'checkouts#success'
-  get 'billing_portal', to: 'dashboards#billing_portal'
+  get 'billing_portal/:id', to: 'dashboards#billing_portal', as: :billing_portal
   get '/users/sign_up', to: redirect('/users/sign_in')
 
   get '/magic_login/:token', to: 'magic_links#show', as: :magic_login
