@@ -18,7 +18,7 @@ class MagicLinksController < ApplicationController
         login_token: SecureRandom.hex(20),
         login_token_valid_until: 10.minutes.from_now
       )
-      UserMailer.magic_link(user).deliver_later
+      UserMailer.magic_link(user).deliver_now
     end
     redirect_to root_path, notice: "If your email exists, you'll receive a login link."
   end
