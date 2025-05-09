@@ -4,7 +4,7 @@ class WebhooksController < ApplicationController
   def stripe
     payload = request.body.read
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
-    secret = ENV['STRIPE_WEBHOOK_SECRET']
+    secret = ENV['STRIPE_WEBHOOK_SECRET'] || Rails.application.credentials.dig(:stripe, :webhook_secret)
     event = nil
 
     begin
@@ -47,6 +47,8 @@ class WebhooksController < ApplicationController
         name: customer_name
       )
     end
+
+    UserMailer.subscription_confirmation(user, user.licenses.last).deliver_later
 
     render json: { message: 'success' }, status: 200
   end

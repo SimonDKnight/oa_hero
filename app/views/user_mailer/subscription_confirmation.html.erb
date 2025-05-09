@@ -1,0 +1,30 @@
+<!-- app/views/user_mailer/subscription_confirmation.html.erb -->
+<table style="width: 100%; max-width: 600px; margin: auto; font-family: Arial, sans-serif; background: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
+  <tr style="background: #0d1321;">
+    <td style="padding: 20px; text-align: center;">
+      <img src="https://www.oahero.com/path-to-your-logo.png" alt="OA Hero" style="height: 50px;" />
+    </td>
+  </tr>
+  <tr>
+    <td style="padding: 30px; text-align: center;">
+      <h2 style="color: #0d1321;">Thank You for Subscribing!</h2>
+      <p style="color: #444; font-size: 16px;">
+        You’ve successfully activated your <strong><%= @license.plan.titleize %></strong> license for OA Hero.
+      </p>
+      <% if @license.plan == "yearly" && @license.expires_at %>
+        <p style="color: #444; font-size: 14px;">
+          Your subscription renews on <strong><%= @license.expires_at.strftime('%B %d, %Y') %></strong>.
+        </p>
+      <% end %>
+      <div style="margin-top: 30px;">
+        <a href="https://www.oahero.com" style="padding: 12px 24px; background: #0059ff; color: #fff; text-decoration: none; border-radius: 4px;">Go to Dashboard</a>
+      </div>
+    </td>
+  </tr>
+  <tr style="background: #f5f5f5;">
+    <td style="padding: 20px; text-align: center; font-size: 12px; color: #777;">
+      You’re receiving this email because you signed up for OA Hero.<br>
+      If you have any questions, contact us at <a href="mailto:support@oahero.com">support@oahero.com</a>
+    </td>
+  </tr>
+</table>

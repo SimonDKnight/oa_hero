@@ -6,4 +6,10 @@ class UserMailer < ApplicationMailer
     @login_url = magic_login_url(token: user.login_token)
     mail(to: @user.email, subject: "Your Magic Login Link for OA Hero")
   end
+
+  def subscription_confirmation(user, license)
+    @user = user
+    @license = license
+    mail(to: @user.email, subject: "🎉 Welcome to OA Hero — Your Subscription Is Active")
+  end
 end
