@@ -4,7 +4,7 @@ class CheckoutsController < ApplicationController
                when 'yearly'
                  'price_1RJorAK9zwEyspUKt04MHqjr'  # Replace with your Stripe yearly subscription Price ID
                when 'lifetime'
-                 'price_1RMlNPK9zwEyspUKc04SEsjr'  # Replace with your Stripe one-time Price ID
+                 'price_1RNvW7K9zwEyspUKtciXgITl'  # Replace with your Stripe one-time Price ID
                else
                  return render json: { error: 'Invalid plan' }, status: :unprocessable_entity
                end
