@@ -15,7 +15,7 @@
 
         <div class="ml-auto d-flex align-items-center">
           <% if user_signed_in? %>
-            <span class="gr-text-9 mr-4 text-white">Hi, <%= current_user.email %></span>
+            <span class="gr-text-9 mr-4 text-white">Hi, <%= current_user.name.presence || current_user.email %></span>
 
             <%= link_to 'Dashboard', dashboard_path,
                         class: "btn btn-sm btn-outline-light rounded-8 gr-hover-y mr-3" %>
