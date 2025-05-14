@@ -45,26 +45,32 @@
             <span class="small-title gr-text-12 text-uppercase text-red font-weight-bold">
               <% current_user.licenses.each do |license| %>
                 <%= license.plan.capitalize %> Plan
-              </span>
+            </span>
 
-              <div class="mt-9 mb-6">
-                <% if license.plan == 'yearly' && license.stripe_subscription_id.present? %>
-                  <% begin %>
-                    <% subscription = Stripe::Subscription.retrieve(license.stripe_subscription_id) %>
-                    <% renewal_date = Time.at(license.expires_at).to_date %>
-                    <p class="gr-text-9">Renews on <strong><%= renewal_date.strftime('%B %d, %Y') %></strong></p>
-                  <% rescue => e %>
-                    <p class="text-red-500 gr-text-9">Unable to load renewal date</p>
+                <div class="mt-9 mb-6">
+                  <% if license.plan == 'yearly' && license.stripe_subscription_id.present? %>
+                    <% begin %>
+                      <% subscription = Stripe::Subscription.retrieve(license.stripe_subscription_id) %>
+                      <% renewal_date = Time.at(license.expires_at).to_date %>
+                      <p class="gr-text-9">Renews on <strong><%= renewal_date.strftime('%B %d, %Y') %></strong></p>
+                    <% rescue => e %>
+                      <p class="text-red-500 gr-text-9">Unable to load renewal date</p>
+                    <% end %>
+                  <% else %>
+                    <p class="gr-text-9">You have lifetime access 🎉</p>
                   <% end %>
-                <% else %>
-                  <p class="gr-text-9">You have lifetime access 🎉</p>
-                <% end %>
 
-                <div class="mt-6">
-                  <%= link_to 'Manage Billing', billing_portal_path(license.id), class: "btn btn-blue rounded-8 w-100" %>
-                </div>
-              <% end %>
-            </div>
+                  <div class="mt-6">
+                    <%= link_to 'Manage Billing', billing_portal_path(license.id), class: "btn btn-blue rounded-8 w-100" %>
+                  </div>
+                <% end %>
+              </div>
+              <div>
+                <% if current_user.licenses.any? %>
+                  <p>Download the Chrome extension here:</p>
+                  <%= link_to "Download Here", "https://oa-hero.s3.us-west-2.amazonaws.com/OA-Hero-1.0.0.zip", target: "_blank", rel: "noopener", class: "btn btn-primary" %>
+                <% end %>
+              </div>
           </div>
         </div>
       </div>
