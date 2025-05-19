@@ -67,7 +67,7 @@
               <div>
                 <% if current_user.licenses.any? %>
                   <p>Download the Chrome extension here:</p>
-                  <%= link_to "Download Here", "https://oa-hero.s3.us-west-2.amazonaws.com/OA-Hero-1.0.0.zip", target: "_blank", rel: "noopener", class: "btn btn-primary" %>
+                  <%= link_to "Download Here", ENV["OA_HERO_DOWNLOAD_URL"], target: "_blank", rel: "noopener", class: "btn btn-primary" %>
                 <% end %>
               </div>
           </div>
