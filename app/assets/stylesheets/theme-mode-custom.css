@@ -32,3 +32,6 @@ body[data-theme='dark'] .btn-toggle.active span {
 }
 
 /*# sourceMappingURL=maps/theme-mode-custom.css.map */
+.gr-text-x-large !important {
+  font-size: x-large;
+}

@@ -15,7 +15,6 @@
 
         <div class="ml-auto d-flex align-items-center">
           <% if user_signed_in? %>
-            <span class="gr-text-9 mr-4 text-white">Hi, <%= current_user.name.presence || current_user.email %></span>
 
             <%= link_to 'Dashboard', dashboard_path,
                         class: "btn btn-sm btn-outline-light rounded-8 gr-hover-y mr-3" %>
@@ -48,7 +47,8 @@
           <div class="hero-content mt-11 mt-lg-0">
             <h4 class="pre-title gr-text-12 text-red text-uppercase mb-7">Take your sourcing to the next level</h4>
             <h1 class="title gr-text-2 mb-8">Avoid cancellations and maximise your profits.</h1>
-            <p class="gr-text-8 mb-11 pr-md-12">OA Hero is your ultimate sourcing companion! It's a chrome extension takes your sourcing to the next level by helping you maximise any deals you find and helps keep you out of trouble. </p>
+            <p class="gr-text-8 mb-11 pr-md-12">OA Hero is your ultimate sourcing companion! It's a Chrome extension takes your sourcing to the next level by helping you maximise any deals you find and helps keep you out of trouble. </p>
+            <p class="gr-text-8 mb-11 pr-md-12">We are currently in our MVP (Minimum Viable Product) phase and the data is not 100% complete yet, but the data we do provide is valuable and we appreciate any feedback and support as we add more sites over the coming weeks.  </p>
             <div class="hero-btn">
               <%= link_to 'Sign Up Now!', '#pricing', class: "btn gr-hover-y btn-primary" %>
             </div>
@@ -243,7 +243,7 @@
         <div class="col-lg-4 col-md-6 col-sm-6 mb-9">
           <div class="single-fact d-flex px-9 px-sm-0 px-xl-9">
             <h3 class="gr-text-3 mr-9"><span class="counter">100%</span></h3>
-            <p class="gr-text-9 mb-0">Satisfaction Guranteed</p>
+            <p class="gr-text-9 mb-0">Satisfaction Guaranteed</p>
           </div>
         </div>
       </div>
@@ -254,7 +254,7 @@
       <!-- .pricing card -->
       <div class="pricing-card bg-gray-2 gr-hover-shadow-1 text-center pt-9 pb-9 pr-9 pr-xl-9  pl-9 pl-xl-9 border rounded-10">
         <div class="price-content light-mode-texts">
-          <span class="small-title gr-text-12 text-uppercase text-red font-weight-bold">Yearly</span>
+          <span class="small-title text-uppercase text-red font-weight-bold", style="font-size: x-large;">Yearly</span>
           <div class="d-flex align-items-end justify-content-center mt-9 ">
             <span class="currency mr-2 gr-text-6 text-blackish-blue font-weight-bold line-spacing-none">£</span>
             <h2 class="price-value gr-text-2 font-weight-bold line-spacing-none mb-0 text-blackish-blue">
@@ -278,7 +278,8 @@
       <!-- .pricing card -->
       <div class="pricing-card gr-hover-shadow-1 gr-box-shadow-4 text-center pt-9 pb-9 pr-9 pr-xl-9  pl-9 pl-xl-9 bg-white rounded-10">
         <div class="price-content light-mode-texts">
-          <span class="small-title gr-text-12 text-uppercase text-red font-weight-bold">Lifetime</span>
+          <span class="small-title gr-text-x-large text-uppercase text-red font-weight-bold" style="font-size: x-large;">Lifetime</span>
+          <p><span class="small-title text-uppercase text-red font-weight-bold", style="font-size: medium;"><%= 100 - License.all.where(plan: "lifetime").count  %>/100 Lifetime Licenses Left</span></p>
           <div class="d-flex align-items-end justify-content-center mt-9 ">
             <span class="currency mr-2 gr-text-6 text-blackish-blue font-weight-bold line-spacing-none">£</span>
             <h2 class="price-value gr-text-2 font-weight-bold line-spacing-none mb-0 text-blackish-blue">
@@ -381,44 +382,75 @@
             <li class="mr-2"><a href="" class="text-storm gr-hover-text-green"><i class="icon icon-logo-linkedin"></i></a></li>
           </ul>
         </div>
-        <div class="col-lg-8 offset-lg-1 col-md-8">
-          <div class="row">
-            <div class="col-xs-6 col-lg-3">
-              <div class="single-footer mb-13 mb-lg-9">
-                <p class="footer-title gr-text-11 mb-7">Company</p>
-                <ul class="footer-list list-unstyled gr-text-9">
-                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">About us</a></li>
-                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Contact us</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-3">
-              <div class="single-footer mb-13 mb-lg-9">
-                <p class="footer-title gr-text-11 mb-7">Product</p>
-                <ul class="footer-list list-unstyled gr-text-9">
-                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Features</a></li>
-                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Pricing</a></li>
-                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Support</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-xs-6 col-lg-3">
-              <div class="single-footer mb-13 mb-lg-9">
-                <p class="footer-title gr-text-11 mb-7">Legal</p>
-                <ul class="footer-list list-unstyled gr-text-9">
-                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Privacy Policy</a></li>
-                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Terms &amp; Conditions</a></li>
-                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Return Policy</a></li>
-                </ul>
+<!--        <div class="col-lg-8 offset-lg-1 col-md-8">-->
+<!--          <div class="row">-->
+<!--            <div class="col-xs-6 col-lg-3">-->
+<!--              <div class="single-footer mb-13 mb-lg-9">-->
+<!--                <p class="footer-title gr-text-11 mb-7">Company</p>-->
+<!--                <ul class="footer-list list-unstyled gr-text-9">-->
+<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">About us</a></li>-->
+<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Contact us</a></li>-->
+<!--                </ul>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-6 col-lg-3">-->
+<!--              <div class="single-footer mb-13 mb-lg-9">-->
+<!--                <p class="footer-title gr-text-11 mb-7">Product</p>-->
+<!--                <ul class="footer-list list-unstyled gr-text-9">-->
+<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">FAQ</a></li>-->
+<!--                  <li class="py-2"><a href="https://discord.gg/jcxYbBKaku" class="gr-text-color gr-hover-text-green">Support</a></li>-->
+<!--                </ul>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-6 col-lg-3">-->
+<!--              <div class="single-footer mb-13 mb-lg-9">-->
+<!--                <p class="footer-title gr-text-11 mb-7">Legal</p>-->
+<!--                <ul class="footer-list list-unstyled gr-text-9">-->
+<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Privacy Policy</a></li>-->
+<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Terms &amp; Conditions</a></li>-->
+<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Return Policy</a></li>-->
+<!--                </ul>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+        <!--<!--<div class="col-lg-8 offset-lg-1 col-md-8">-->
+          <!--<!--          <div class="row">-->
+          <!--<!--            <div class="col-xs-6 col-lg-3">-->
+          <!--<!--              <div class="single-footer mb-13 mb-lg-9">-->
+          <!--<!--                <p class="footer-title gr-text-11 mb-7">Company</p>-->
+          <!--<!--                <ul class="footer-list list-unstyled gr-text-9">-->
+          <!--<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">About us</a></li>-->
+          <!--<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Contact us</a></li>-->
+          <!--<!--                </ul>-->
+          <!--<!--              </div>-->
+          <!--<!--            </div>-->
+          <!--<!--            <div class="col-xs-6 col-lg-3">-->
+          <!--<!--              <div class="single-footer mb-13 mb-lg-9">-->
+          <!--<!--                <p class="footer-title gr-text-11 mb-7">Product</p>-->
+          <!--<!--                <ul class="footer-list list-unstyled gr-text-9">-->
+          <!--<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">FAQ</a></li>-->
+          <!--<!--                  <li class="py-2"><a href="https://discord.gg/jcxYbBKaku" class="gr-text-color gr-hover-text-green">Support</a></li>-->
+          <!--<!--                </ul>-->
+          <!--<!--              </div>-->
+          <!--<!--            </div>-->
+          <!--<!--            <div class="col-xs-6 col-lg-3">-->
+          <!--<!--              <div class="single-footer mb-13 mb-lg-9">-->
+          <!--<!--                <p class="footer-title gr-text-11 mb-7">Legal</p>-->
+          <!--<!--                <ul class="footer-list list-unstyled gr-text-9">-->
+          <!--<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Privacy Policy</a></li>-->
+          <!--<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Terms &amp; Conditions</a></li>-->
+          <!--<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Return Policy</a></li>-->
+          <!--<!--                </ul>-->
+          <!--<!--              </div>-->
+          <!--<!--            </div>-->
+          <!--<!--          </div>-->
+          <!--<!--        </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Vendor Scripts -->
+        <!-- Vendor Scripts -->
 <!--<script src="js/vendor.min.js"></script>-->
 <!-- Plugin's Scripts -->
 <!--<script src="plugins/fancybox/jquery.fancybox.min.js"></script>-->

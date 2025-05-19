@@ -12,7 +12,6 @@
         <!-- Login/Logout -->
         <div class="ml-auto d-flex align-items-center">
           <% if user_signed_in? %>
-            <span class="gr-text-9 mr-4 text-white">Hi, <%= current_user.name.presence || current_user.email %></span>
             <%= button_to 'Logout', destroy_user_session_path, method: :delete,
                           class: "btn btn-sm btn-red rounded-8 gr-hover-y" %>
           <% else %>
@@ -72,6 +71,28 @@
                 <% end %>
               </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container pb-15">
+    <div class="row justify-content-center">
+      <div class="col-lg-6" data-aos="fade-up" data-aos-duration="800" data-aos-once="true">
+        <div class="pricing-card gr-hover-shadow-1 text-center pt-9 pb-9 px-9 border rounded-10">
+          <div class="price-content">
+            <span class="small-title gr-text-12 text-uppercase text-red font-weight-bold">
+                Support Server
+                </span>
+
+                <div class="mt-9 mb-6">
+                      <p class="text-red-500 gr-text-9">For any help or support request please join our discord server</p>
+
+                  <div class="mt-6">
+                    <%= link_to 'Join Support Server', "https://g.fbamogul.com/support-server", class: "btn btn-blue rounded-8 w-100", target: "_blank" %>
+                  </div>
+              </div>
+              </div>
         </div>
       </div>
     </div>
