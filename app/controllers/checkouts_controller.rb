@@ -2,9 +2,9 @@ class CheckoutsController < ApplicationController
   def create
     price_id = case params[:plan]
                when 'yearly'
-                 'price_1RJorAK9zwEyspUKt04MHqjr'  # Replace with your Stripe yearly subscription Price ID
+                 'price_1RQrI5K9zwEyspUKySYaBTab'  # Replace with your Stripe yearly subscription Price ID
                when 'lifetime'
-                 'price_1RNvW7K9zwEyspUKtciXgITl'  # Replace with your Stripe one-time Price ID
+                 'price_1RQr7oK9zwEyspUKpB7ciNaa'  # Replace with your Stripe one-time Price ID
                else
                  return render json: { error: 'Invalid plan' }, status: :unprocessable_entity
                end
