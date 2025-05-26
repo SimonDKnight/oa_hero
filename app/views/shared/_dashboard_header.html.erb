@@ -28,7 +28,7 @@
         <div class="ml-auto d-flex align-items-center pt-8">
           <% if user_signed_in? %>
 
-            <%= button_to 'Download', ENV["OA_HERO_DOWNLOAD_URL"],
+            <%= link_to 'Download', ENV["OA_HERO_DOWNLOAD_URL"],
                         class: "btn btn-sm btn-blue rounded-8 gr-hover-y mr-3" %>
 
             <%= button_to 'Logout', destroy_user_session_path,

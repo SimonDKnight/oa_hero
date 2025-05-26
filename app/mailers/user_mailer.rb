@@ -10,6 +10,7 @@ class UserMailer < ApplicationMailer
   def subscription_confirmation(user, license)
     @user = user
     @license = license
+    @download_link = ENV["OA_HERO_DOWNLOAD_URL"]
     mail(to: @user.email, subject: "🎉 Welcome to OA Hero — Your Subscription Is Active")
   end
 end
