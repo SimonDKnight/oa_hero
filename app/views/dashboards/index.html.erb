@@ -1,27 +1,6 @@
 <div class="site-wrapper overflow-hidden">
   <!-- Header -->
-  <header class="site-header site-header--menu-left site-header--absolute">
-    <div class="container">
-      <nav class="navbar site-navbar offcanvas-active navbar-expand-lg px-0">
-        <div class="brand-logo">
-          <a href="/">
-            <%= image_tag "image/OAHero-logo-dark.png", class: "dark-version-logo" %>
-          </a>
-        </div>
-
-        <!-- Login/Logout -->
-        <div class="ml-auto d-flex align-items-center">
-          <% if user_signed_in? %>
-            <%= button_to 'Logout', destroy_user_session_path, method: :delete,
-                          class: "btn btn-sm btn-red rounded-8 gr-hover-y" %>
-          <% else %>
-            <%= link_to 'Login', new_user_session_path,
-                        class: "btn btn-sm btn-primary rounded-8 gr-hover-y" %>
-          <% end %>
-        </div>
-      </nav>
-    </div>
-  </header>
+  <%= render "shared/dashboard_header" %>
 
   <!-- Dashboard Hero Section -->
   <div class="bg-default-2 pt-27 pb-15">
