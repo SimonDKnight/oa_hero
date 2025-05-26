@@ -1,35 +1,7 @@
 
 <div class="site-wrapper overflow-hidden">
   <!-- Header Area -->
-  <header class="site-header site-header--menu-left site-header--absolute">
-    <div class="container">
-      <nav class="navbar site-navbar offcanvas-active navbar-expand-lg  px-0">
-        <!-- Brand Logo-->
-        <div class="brand-logo"><a href="https://oahero.com">
-          <!-- light version logo (logo must be black)-->
-          <%#= image_tag "image/OAHero-logo-light.png", alt: "Logo" %>
-          <!-- Dark version logo (logo must be White)-->
-          <%= image_tag "image/OAHero-logo-dark.png", class: "dark-version-logo" %>
-        </a>
-        </div>
-
-        <div class="ml-auto d-flex align-items-center">
-          <% if user_signed_in? %>
-
-            <%= link_to 'Dashboard', dashboard_path,
-                        class: "btn btn-sm btn-outline-light rounded-8 gr-hover-y mr-3" %>
-
-            <%= button_to 'Logout', destroy_user_session_path,
-                          method: :delete,
-                          class: "btn btn-sm btn-red rounded-8 gr-hover-y" %>
-          <% else %>
-            <%= link_to 'Login', new_user_session_path,
-                        class: "btn btn-sm btn-primary rounded-8 gr-hover-y" %>
-          <% end %>
-        </div>
-      </nav>
-    </div>
-  </header>
+  <%= render "shared/header" %>
   <!-- navbar-dark -->
   <!-- Hero Area -->
   <div class="position-relative bg-default-2 bg-pattern pattern-2 pt-27 pt-lg-32 pb-15 pb-lg-27">
@@ -60,7 +32,7 @@
 
   <!-- Service section  -->
   <div class="service-section bg-default-4 pt-15 pb-13 py-lg-25 bg-blackish-blue border-bottom border-top border-gray-3">
-    <div class="container">
+    <div class="container" id="features">
       <div class="row justify-content-center">
         <div class="col-xl-6 col-lg-7 col-md-9">
           <div class="section-title text-center mb-11 mb-lg-19 px-lg-3">
@@ -207,17 +179,17 @@
                   </div>
                 </div>
               </div>
-<!--              <div class="col-md-6 col-lg-12" data-aos="fade-left" data-aos-duration="900" data-aos-once="true">-->
-<!--                <div class="single-widget my-9 media">-->
-<!--                  <div class="media-icon circle-sm bg-blue mr-8">-->
-<!--                    <span class="count text-white gr-text-9">3</span>-->
-<!--                  </div>-->
-<!--                  <div class="media-body">-->
-<!--                    <h3 class="w-title mb-5 gr-text-7">Transparency, IP, PL or PI Brands</h3>-->
-<!--                    <p class="gr-text-9 mb-0">See if the brand your looking at has know issues such as transparency codes, Intellectual Property, Private Label or Paralel Import claims.</p>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
+              <!--              <div class="col-md-6 col-lg-12" data-aos="fade-left" data-aos-duration="900" data-aos-once="true">-->
+              <!--                <div class="single-widget my-9 media">-->
+              <!--                  <div class="media-icon circle-sm bg-blue mr-8">-->
+              <!--                    <span class="count text-white gr-text-9">3</span>-->
+              <!--                  </div>-->
+              <!--                  <div class="media-body">-->
+              <!--                    <h3 class="w-title mb-5 gr-text-7">Transparency, IP, PL or PI Brands</h3>-->
+              <!--                    <p class="gr-text-9 mb-0">See if the brand your looking at has know issues such as transparency codes, Intellectual Property, Private Label or Paralel Import claims.</p>-->
+              <!--                  </div>-->
+              <!--                </div>-->
+              <!--              </div>-->
             </div>
           </div>
         </div>
@@ -271,7 +243,7 @@
           </ul>
         </div>
         <%= button_to 'Subscribe Yearly', checkouts_path(plan: 'yearly'), method: :post, class: "btn btn-black rounded-8 gr-min-width-219" %>
-<!--        <a href="" class="btn btn-black rounded-8 gr-min-width-219">Sign Up Today</a>-->
+        <!--        <a href="" class="btn btn-black rounded-8 gr-min-width-219">Sign Up Today</a>-->
       </div>
       <!-- /.pricing carde Ends-->
     </div>
@@ -300,167 +272,144 @@
     </div>
 
   </div>
-  <div class="cta-section bg-default-2 ">
+
+  <div class="testimonial-section pt-9 pt-lg-20 pb-lg-25 dark-mode-texts bg-default-5">
     <div class="container">
-      <div class="cta-wrapper pt-13 pb-14 py-lg-19 border-top ">
-        <div class="row align-items-center justify-content-center">
-          <div class="col-lg-6 col-md-10">
-            <div class="cta-text section-title">
-              <h2 class="title gr-text-5 mb-7">Ready to take your sourcing to the next level?</h2>
-              <p class="gr-text-8 mb-8 mb-lg-0">Choose a plan from above and sign up today!</p>
+      <div class="row justify-content-center">
+        <div class="col-md-6 mb-13 mb-lg-0" data-aos="fade-right" data-aos-duration="700" data-aos-once="true">
+          <div class="testimonial-card">
+            <div class="quote-icon pb-14">
+              <%= image_tag "image/l4/png/quote.png" %>
             </div>
-          </div>
-          <div class="col-lg-4 offset-lg-2 col-md-10">
-            <div class="cta-btn text-lg-right">
-              <%= link_to 'Sign Up Now!', '#pricing', class: "btn gr-hover-y btn-primary rounded-8" %>
+            <p class="review-text gr-text-6 font-weight-bold gr-text-color pr-xl-11 mb-0">“If OA Hero has existed a month ago, I would not have bought "Al Haramain L'Aventure", and all my family would not now be getting this perfume for Xmas.😥”</p>
+            <div class="customer-identity d-flex pt-8">
+              <h3 class="name gr-text-9 font-weight-bold mb-0">Charlie</h3>
+              <p class="rank gr-text-9 pl-5 gr-text-color-opacity mb-0">Amazon Seller</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <!--  <div class="cta-section bg-default-2 ">-->
+  <!--    <div class="container">-->
+  <!--      <div class="cta-wrapper pt-13 pb-14 py-lg-19 border-top ">-->
+  <!--        <div class="row align-items-center justify-content-center">-->
+  <!--          <div class="col-lg-6 col-md-10">-->
+  <!--            <div class="cta-text section-title">-->
+  <!--              <h2 class="title gr-text-5 mb-7">Ready to take your sourcing to the next level?</h2>-->
+  <!--              <p class="gr-text-8 mb-8 mb-lg-0">Choose a plan from above and sign up today!</p>-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--          <div class="col-lg-4 offset-lg-2 col-md-10">-->
+  <!--            <div class="cta-btn text-lg-right">-->
+  <%#= link_to 'Sign Up Now!', '#pricing', class: "btn gr-hover-y btn-primary rounded-8" %>
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--  <div class="faq-section pt-12 pt-lg-24 pb-12 pb-lg-24 bg-default-1 dark-mode-texts">-->
+  <!--    <div class="container">-->
+  <!--      <div class="row">-->
+  <!--        <div class="col-md-6 mb-9 pr-xl-12 mb-lg-15">-->
+  <!--          <div class="single-faq media">-->
+  <!--            <div class="count circle-xs bg-green mr-8">-->
+  <!--              <i class="fa-solid fa-question"></i>-->
+  <!--            </div>-->
+  <!--            <div class="faq-text">-->
+  <!--              <h3 class="faq-title mb-7 gr-text-7 gr-text-color">Why buy OA Hero?</h3>-->
+  <!--              <p class="gr-text-9 gr-text-color-opacity">OA Hero will save and make you money at the same time. Amazon sellers use it to find out what sites they can buy from, how much they can order without getting cancelled orders, what sites they can use to ungate brands and what brands to avoid.</p><a href="" class="btn-link with-icon mt-6 text-green h6">Click to learn more <i class="fas fa-arrow-right gr-text-12"></i></a>-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--        <div class="col-md-6 mb-9 pr-xl-12 mb-lg-15">-->
+  <!--          <div class="single-faq media">-->
+  <!--            <div class="count circle-xs bg-green mr-8">-->
+  <!--              <i class="fas fa-question text-white"></i>-->
+  <!--            </div>-->
+  <!--            <div class="faq-text">-->
+  <!--              <h3 class="faq-title mb-7 gr-text-7 gr-text-color">What sites does OA hero</h3>-->
+  <!--              <p class="gr-text-9 gr-text-color-opacity">With lots of unique blocks, you can easily build a page without coding. Build your next landing page. Integer ut Oberyn massa. Sed feugiat vitae turpis a porta. Aliquam sagittis interdum Melisandre.</p>-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--        <div class="col-md-6 mb-9 pr-xl-12 mb-lg-15">-->
+  <!--          <div class="single-faq media">-->
+  <!--            <div class="count circle-xs bg-green mr-8">-->
+  <!--              <i class="fas fa-question text-white"></i>-->
+  <!--            </div>-->
+  <!--            <div class="faq-text">-->
+  <!--              <h3 class="faq-title mb-7 gr-text-7 gr-text-color">Do I get free updates?</h3>-->
+  <!--              <p class="gr-text-9 gr-text-color-opacity">With lots of unique blocks, you can easily build a page without coding. Build your next landing page. Integer ut Oberyn massa. Sed feugiat vitae turpis a porta. Aliquam sagittis interdum Melisandre.</p>-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--        <div class="col-md-6 mb-9 pr-xl-12 mb-lg-15">-->
+  <!--          <div class="single-faq media">-->
+  <!--            <div class="count circle-xs bg-green mr-8">-->
+  <!--              <i class="fas fa-question text-white"></i>-->
+  <!--            </div>-->
+  <!--            <div class="faq-text">-->
+  <!--              <h3 class="faq-title mb-7 gr-text-7 gr-text-color">Will you provide support?</h3>-->
+  <!--              <p class="gr-text-9 gr-text-color-opacity">With lots of unique blocks, you can easily build a page without coding. Build your next landing page. Integer ut Oberyn massa. Sed feugiat vitae turpis a porta. Aliquam sagittis interdum Melisandre.</p>-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--        <div class="col-12 text-center mt-3 ">-->
+  <!--          <p class="more-support gr-text-9 gr-text-color">Haven’t got your answer? <a href="#" class="support-link text-green">Contact our support now</a></p>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
 
   <!-- Testimonial section 2 -->
-<!--  <div class="testimonial-section2 position-relative bg-blue dark-mode-texts bg-pattern pattern-4 pt-14 pt-lg-26 pb-14 pb-lg-26 ">-->
-<!--    <div class="container">-->
-<!--      <div class="row justify-content-center">-->
-<!--        <div class="col-md-8 col-lg-7 col-xl-6">-->
-<!--          <div class="section-title text-center mb-9">-->
-<!--            <h4 class="pre-title gr-text-12 text-green text-uppercase mb-0">Testimonial</h4>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="row align-items-center justify-content-around">-->
-<!--        <div class="col-lg-7 col-md-9">-->
-<!--          <div class="single-testimonial text-center">-->
-<!--            <h3 class="review-text gr-text-5 mb-11">“Simply the best. Better than all the rest. I’d recommend this product to beginners and advanced users.”</h3>-->
-<!--            <div class="reviewer-img mb-7">-->
-              <%#= image_tag "image/l5/jpg/l5-testimonial2.jpg", class:"circle-lg mx-auto"%>
-<!--            </div>-->
-<!--            <h3 class="username gr-text-9 mb-1">Ian Klein</h3>-->
-<!--            <span class="rank gr-text-11 gr-text-color-opacity">Digital Marketer</span>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
+  <!--  <div class="testimonial-section2 position-relative bg-blue dark-mode-texts bg-pattern pattern-4 pt-14 pt-lg-26 pb-14 pb-lg-26 ">-->
+  <!--    <div class="container">-->
+  <!--      <div class="row justify-content-center">-->
+  <!--        <div class="col-md-8 col-lg-7 col-xl-6">-->
+  <!--          <div class="section-title text-center mb-9">-->
+  <!--            <h4 class="pre-title gr-text-12 text-green text-uppercase mb-0">Testimonial</h4>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--      <div class="row align-items-center justify-content-around">-->
+  <!--        <div class="col-lg-7 col-md-9">-->
+  <!--          <div class="single-testimonial text-center">-->
+  <!--            <h3 class="review-text gr-text-5 mb-11">“Simply the best. Better than all the rest. I’d recommend this product to beginners and advanced users.”</h3>-->
+  <!--            <div class="reviewer-img mb-7">-->
+  <%#= image_tag "image/l5/jpg/l5-testimonial2.jpg", class:"circle-lg mx-auto"%>
+  <!--            </div>-->
+  <!--            <h3 class="username gr-text-9 mb-1">Ian Klein</h3>-->
+  <!--            <span class="rank gr-text-11 gr-text-color-opacity">Digital Marketer</span>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
   <!-- CTA section 2 -->
-<!--  <div class="cta-section-2 dark-mode-texts bg-blackish-blue ">-->
-<!--    <div class="container">-->
-<!--      <div class="cta-wrapper pt-14 pb-14 py-lg-19 border-bottom">-->
-<!--        <div class="row align-items-center justify-content-center">-->
-<!--          <div class="col-lg-6 col-md-10">-->
-<!--            <div class="cta-text section-title">-->
-<!--              <h2 class="title gr-text-5 mb-7 text-white">Ready to launch your next project?</h2>-->
-<!--              <p class="gr-text-8 gr-color-white-opacity-7 mb-8 mb-lg-0">With lots of unique blocks, you can easily build a page without coding. Build your next landing page.</p>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="col-lg-4 offset-lg-2 col-md-10">-->
-<!--            <div class="cta-btn text-lg-right">-->
-<!--              <a href="#" class="btn btn-primary gr-hover-y">Get started on a project</a>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
+  <!--  <div class="cta-section-2 dark-mode-texts bg-blackish-blue ">-->
+  <!--    <div class="container">-->
+  <!--      <div class="cta-wrapper pt-14 pb-14 py-lg-19 border-bottom">-->
+  <!--        <div class="row align-items-center justify-content-center">-->
+  <!--          <div class="col-lg-6 col-md-10">-->
+  <!--            <div class="cta-text section-title">-->
+  <!--              <h2 class="title gr-text-5 mb-7 text-white">Ready to launch your next project?</h2>-->
+  <!--              <p class="gr-text-8 gr-color-white-opacity-7 mb-8 mb-lg-0">With lots of unique blocks, you can easily build a page without coding. Build your next landing page.</p>-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--          <div class="col-lg-4 offset-lg-2 col-md-10">-->
+  <!--            <div class="cta-btn text-lg-right">-->
+  <!--              <a href="#" class="btn btn-primary gr-hover-y">Get started on a project</a>-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
 
 
 
   <!-- Footer section -->
-  <div class="footer-section pt-15 pt-lg-25 pb-lg-21 dark-mode-texts bg-blackish-blue border-top border-gray-3">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-3 col-md-4">
-          <div class="footer-logo mb-11">
-            <%= image_tag "image/OAHero-logo-footer.png" %>
-          </div>
-          <p class="gr-text-11">Your ultimate sourcing companion!</p>
-          <ul class="social-icons py-7 list-unstyled mb-7 mb-lg-0">
-            <li class="mr-2"><a href="" class="text-storm gr-hover-text-green"><i class="icon icon-logo-twitter"></i></a></li>
-            <li class="mr-2"><a href="" class="text-storm gr-hover-text-green"><i class="icon icon-logo-facebook"></i></a></li>
-            <li class="mr-2"><a href="" class="text-storm gr-hover-text-green"><i class="icon icon-instant-camera-2"></i></a></li>
-            <li class="mr-2"><a href="" class="text-storm gr-hover-text-green"><i class="icon icon-logo-linkedin"></i></a></li>
-          </ul>
-        </div>
-<!--        <div class="col-lg-8 offset-lg-1 col-md-8">-->
-<!--          <div class="row">-->
-<!--            <div class="col-xs-6 col-lg-3">-->
-<!--              <div class="single-footer mb-13 mb-lg-9">-->
-<!--                <p class="footer-title gr-text-11 mb-7">Company</p>-->
-<!--                <ul class="footer-list list-unstyled gr-text-9">-->
-<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">About us</a></li>-->
-<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Contact us</a></li>-->
-<!--                </ul>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="col-xs-6 col-lg-3">-->
-<!--              <div class="single-footer mb-13 mb-lg-9">-->
-<!--                <p class="footer-title gr-text-11 mb-7">Product</p>-->
-<!--                <ul class="footer-list list-unstyled gr-text-9">-->
-<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">FAQ</a></li>-->
-<!--                  <li class="py-2"><a href="https://discord.gg/jcxYbBKaku" class="gr-text-color gr-hover-text-green">Support</a></li>-->
-<!--                </ul>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="col-xs-6 col-lg-3">-->
-<!--              <div class="single-footer mb-13 mb-lg-9">-->
-<!--                <p class="footer-title gr-text-11 mb-7">Legal</p>-->
-<!--                <ul class="footer-list list-unstyled gr-text-9">-->
-<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Privacy Policy</a></li>-->
-<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Terms &amp; Conditions</a></li>-->
-<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Return Policy</a></li>-->
-<!--                </ul>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-        <!--<!--<div class="col-lg-8 offset-lg-1 col-md-8">-->
-          <!--<!--          <div class="row">-->
-          <!--<!--            <div class="col-xs-6 col-lg-3">-->
-          <!--<!--              <div class="single-footer mb-13 mb-lg-9">-->
-          <!--<!--                <p class="footer-title gr-text-11 mb-7">Company</p>-->
-          <!--<!--                <ul class="footer-list list-unstyled gr-text-9">-->
-          <!--<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">About us</a></li>-->
-          <!--<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Contact us</a></li>-->
-          <!--<!--                </ul>-->
-          <!--<!--              </div>-->
-          <!--<!--            </div>-->
-          <!--<!--            <div class="col-xs-6 col-lg-3">-->
-          <!--<!--              <div class="single-footer mb-13 mb-lg-9">-->
-          <!--<!--                <p class="footer-title gr-text-11 mb-7">Product</p>-->
-          <!--<!--                <ul class="footer-list list-unstyled gr-text-9">-->
-          <!--<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">FAQ</a></li>-->
-          <!--<!--                  <li class="py-2"><a href="https://discord.gg/jcxYbBKaku" class="gr-text-color gr-hover-text-green">Support</a></li>-->
-          <!--<!--                </ul>-->
-          <!--<!--              </div>-->
-          <!--<!--            </div>-->
-          <!--<!--            <div class="col-xs-6 col-lg-3">-->
-          <!--<!--              <div class="single-footer mb-13 mb-lg-9">-->
-          <!--<!--                <p class="footer-title gr-text-11 mb-7">Legal</p>-->
-          <!--<!--                <ul class="footer-list list-unstyled gr-text-9">-->
-          <!--<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Privacy Policy</a></li>-->
-          <!--<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Terms &amp; Conditions</a></li>-->
-          <!--<!--                  <li class="py-2"><a href="" class="gr-text-color gr-hover-text-green">Return Policy</a></li>-->
-          <!--<!--                </ul>-->
-          <!--<!--              </div>-->
-          <!--<!--            </div>-->
-          <!--<!--          </div>-->
-          <!--<!--        </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Vendor Scripts -->
-<!--<script src="js/vendor.min.js"></script>-->
-<!-- Plugin's Scripts -->
-<!--<script src="plugins/fancybox/jquery.fancybox.min.js"></script>-->
-<!--<script src="plugins/nice-select/jquery.nice-select.min.js"></script>-->
-<!--<script src="plugins/aos/aos.min.js"></script>-->
-<!--<script src="plugins/slick/slick.min.js"></script>-->
-<!--<script src="plugins/date-picker/js/gijgo.min.js"></script>-->
-<!--<script src="plugins/counter-up/jquery.waypoints.min.js"></script>-->
-<!--<script src="plugins/counter-up/jquery.counterup.min.js"></script>-->
-<!--<script src="plugins/theme-mode-switcher/gr-theme-mode-switcher.js"></script>-->
-<!-- Activation Script -->
-<!--<script src="js/custom.js"></script>-->
+  <%= render "shared/footer" %>
