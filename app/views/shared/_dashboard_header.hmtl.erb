@@ -17,17 +17,13 @@
               <a class="nav-link" href="https://www.oahero.com/" role="button" aria-expanded="false">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#features" role="button" aria-expanded="false">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#pricing" role="button" aria-expanded="false">Pricing</a>
-            </li>
-            <!--              <li class="nav-item">-->
-            <!--                <a class="nav-link" href="https://uxtheme.net/product-support/" role="button" aria-expanded="false">FAQ</a>-->
-            <!--              </li>-->
-            <li class="nav-item">
               <a class="nav-link" href="https://g.fbamogul.com/support-server" role="button" aria-expanded="false", target="_blank">Support</a>
             </li>
+            <li class="nav-item">
+              <%= link_to "Site List", retailer_list_path, class: "nav-link", role: "button", "aria-expanded": "false" %>
+            </li>
+            <%= link_to 'Download', ENV["OA_HERO_DOWNLOAD_URL"], target: "_blank",
+                        class: "btn btn-sm btn-outline-light rounded-8 gr-hover-y mr-3" %>
           </ul>
         </div>
 
