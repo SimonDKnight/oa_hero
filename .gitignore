@@ -37,3 +37,7 @@
 !/app/assets/builds/.keep
 
 /node_modules
+.DS_Store
+app/.DS_Store
+app/assets/images/.DS_Store
+app/assets/images/image/.DS_Store
