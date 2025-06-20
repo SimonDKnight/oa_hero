@@ -70,5 +70,5 @@ end
 
 gem "stripe", "~> 15.1"
 group :development, :test do
-  gem 'rspec-rails', '~> 8.0.0'
+  gem 'rspec-rails', '~> 8.0.1'
 end
