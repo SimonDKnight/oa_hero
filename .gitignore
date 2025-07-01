@@ -42,3 +42,4 @@
 /app/assets/images/.DS_Store
 /app/assets/images/image/.DS_Store
 .idea/inspectionProfiles/
+.byebug_history

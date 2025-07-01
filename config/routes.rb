@@ -31,4 +31,9 @@ Rails.application.routes.draw do
 
   get '/magic_login/:token', to: 'magic_links#show', as: :magic_login
   post '/send_magic_link', to: 'magic_links#create', as: :send_magic_link
+  namespace :api do
+    namespace :v1 do
+      post 'qogita_product_info', to: 'qogita#product_info'
+    end
+  end
 end
