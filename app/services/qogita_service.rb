@@ -37,7 +37,7 @@ class QogitaService
       return Rails.logger.warn("No matching product found for fid: #{fid}") && nil unless matched_product
 
       {
-        brand_name: matched_product['brandName'],
+        brandName: matched_product['brandName'],
         gtin: matched_product['gtin']
       }
     rescue => e
