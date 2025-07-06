@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post 'qogita_product_info', to: 'qogita#product_info'
+      post 'amazon_product_info', to: 'amazon#product_info'
     end
   end
 end
