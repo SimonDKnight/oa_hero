@@ -6,13 +6,21 @@ module Api
         def product_info
           asin = params[:asin]
   
-          return render(json: { error: 'Missing asin' }, status: :bad_request) if asin.blank?
-          result = AmazonService.fetch_product_info(asin)
-        if result && result[:brand].present?
-            Rails.logger.info("Response JSON: #{result.to_json}")
-            render json: result, status: :ok
+          if asin.blank?
+            render json: { success: false, error: 'Missing ASIN' }, status: :bad_request
+            return
+          end
+  
+          product = AmazonService.fetch_product_info(asin)
+  
+          if product.present? && product[:brand].present?
+            labels = BrandLabelService.fetch_labels(product[:brand])
+            brand_info_and_labels_response = product.merge(labels:)
+  
+            Rails.logger.info("Response JSON: #{brand_info_and_labels_response.to_json}")
+            render json: { success: true, data: brand_info_and_labels_response }, status: :ok
           else
-            render json: { error: 'No amazon brand name found' }, status: :not_found
+            render json: { success: false, error: 'No brand info found for ASIN' }, status: :not_found
           end
         end
       end
