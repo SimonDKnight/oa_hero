@@ -17,7 +17,7 @@ module Api
             labels = BrandLabelService.fetch_labels(product[:brand])
             brand_info_and_labels_response = product.merge(labels:)
   
-            Rails.logger.info("Response JSON: #{brand_info_and_labels_response.to_json}")
+            Rails.logger.info("Amazon Response JSON: #{brand_info_and_labels_response.to_json}")
             render json: { success: true, data: brand_info_and_labels_response }, status: :ok
           else
             render json: { success: false, error: 'No brand info found for ASIN' }, status: :not_found

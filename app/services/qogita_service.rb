@@ -30,14 +30,14 @@ class QogitaService
       end
     
       return nil unless response.is_a?(Net::HTTPSuccess)
-    
+
       data = JSON.parse(response.body)
       matched_product = data['results']&.find { |product| product['fid'] == fid }
 
       return Rails.logger.warn("No matching product found for fid: #{fid}") && nil unless matched_product
 
       {
-        brandName: matched_product['brandName'],
+        brand: matched_product['brandName'],
         gtin: matched_product['gtin']
       }
     rescue => e
