@@ -10,9 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_08_051554) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_15_122857) do
+  create_schema "_heroku"
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+  enable_extension "pg_stat_statements"
 
   create_table "licenses", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -24,6 +27,36 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_08_051554) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_licenses_on_user_id"
+  end
+
+  create_table "restricted_brands", force: :cascade do |t|
+    t.string "name"
+    t.boolean "restricted"
+    t.boolean "transparency"
+    t.boolean "private_label"
+    t.boolean "intellectual_property"
+    t.boolean "parallel_import"
+    t.boolean "hard_gated"
+    t.integer "source"
+    t.text "general_info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.string "lc_name"
+    t.string "name"
+    t.text "url"
+    t.string "reclaim_vat"
+    t.string "vat_number"
+    t.string "customer_service_email"
+    t.text "qty_limit"
+    t.text "order_limit"
+    t.boolean "allow_resellers"
+    t.text "vat_invoice_info"
+    t.text "info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

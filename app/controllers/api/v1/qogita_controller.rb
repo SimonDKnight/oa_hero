@@ -7,7 +7,7 @@ module Api
         fid = params[:fid]
         slug = params[:slug]
 
-        return render(json: { error: 'Missing fid or slug' }, status: :bad_request) if fid.blank? || slug.blank?
+        return render(json: { error: "Missing fid or slug" }, status: :bad_request) if fid.blank? || slug.blank?
 
         product = QogitaService.fetch_product_info(fid:, slug:)
 
@@ -18,10 +18,9 @@ module Api
           Rails.logger.info("Qogita Response JSON: #{brand_info_and_labels_response.to_json}")
           render json: { success: true, data: brand_info_and_labels_response }, status: :ok
         else
-          render json: { error: 'No matching product found' }, status: :not_found
+          render json: { error: "No matching product found" }, status: :not_found
         end
       end
     end
   end
 end
-  
