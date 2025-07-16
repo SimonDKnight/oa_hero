@@ -1,0 +1,2 @@
+class RestrictedBrand < ApplicationRecord
+end
