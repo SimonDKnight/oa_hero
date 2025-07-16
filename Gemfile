@@ -75,7 +75,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "stripe", "~> 15.1"
+gem "stripe", "~> 15.3"
 group :development, :test do
   gem "rspec-rails", "~> 8.0.0"
 end
